@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="header">
+    <div class="container">
+        <nav>
+            <img src="images/title.jpg" class="logo">
+            <ul id="sidemenu">
+                <li><a href="#link">Link and Title</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#lyrics">Lyrics</a></li>
+                <li><a href="#Contact">Contact</a></li>
+                <i class="fas fa-times" onclick="closemenu()"></i>
+            </ul>
+            <i class="fas fa-bars" onclick="openmenu()"></i>
+        </nav>
+        <div class="header-text">
+            <p>https://www.youtube.com/watch?v=QaEx2A7p9Dk</p>
+            <h1>Seasons <span>Hillsong Worship</h1>
+        </div>
+    </div>
+</div>
+<!-- -----------about---------- -->
+<div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="about-col-1">
+                <img src="images/music.jpg" class="music">
+            </div>
+            <div class="about-col-2">
+                <h1 class="sub-title">Seasons by Hillsong Worship is about timing and trusting God's plans for you.</h1>
+                <p></p>
+        </div>
+    </div>
+</div>
+<!-- ---------lyrics---------------- -->
+<div id="Lyrics">
+    <div class="container">
+        <h1 class="sub-title">Sing with me!</h1>
+        <div class="services-list">
+            <div>
+                <i class="fas fa-code"></i>
+                <h2>Lyrics</h2>
+                <p>Like the frost on a rose, winter comes for us all
+                    Oh, how nature acquaints us with the nature of patience
+                    Like a seed in the snow, I've been buried to grow
+                    For Your promise is loyal, from seed to sequoia
+                    Though the winter is long, even richer
+                    The harvest it brings
+                    Though my waiting prolongs even greater
+                    Your promise for me like a seed
+                    I believe that my season will come
+                    Lord, I think of Your love like a low winter sun
+                    And as I gaze, I am blinded in the light of Your brightness
+                    And like a fire to the snow, I'm renewed in Your warmth
+                    Melt the ice of this wild soul 'til the barren is beautiful
+                    And though the winter is long, even richer
+                    The harvest it brings
+                    Though my waiting prolongs even greater
+                    Your promise for me like a seed
+                    I believe that my season will come</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ----------contact------------- -->
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p><i class="fas fa-paper-plane"></i> manaigtrina@gmail.com</p>
+                <p><i class="fas fa-phone-square-alt"></i> (250)883-2165</p>
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Name" required>
+                    <input type="email" name="Email" placeholder="Email" required>
+                    <input type="contact" name="Email" placeholder="Contact Number" required>
+                    <textarea name="Message" rows="6" placeholder="Inquiry"></textarea>
+                    <button type="submit" class="btn btn2">Submit</button>
+                </form>
+                <span id="msg"></span>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>Trina Elaine Manaig</a></p>
+    </div>
+</div>
+
+
+
+<script>
+
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+
+    function opentab(tabname){
+        for(tablink of tablinks){
+            tablink.classList.remove("active-link");
+        }
+        for(tabcontent of tabcontents){
+            tabcontent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab");
+    }
+
+</script>
+
+<script>
+
+    var sidemeu = document.getElementById("sidemenu");
+
+    function openmenu(){
+        sidemeu.style.right = "0";
+    }
+    function closemenu(){
+        sidemeu.style.right = "-200px";
+    }
+
+</script>
+<script>
+    const scriptURL = '< add you own link here >' // add your own app script link here
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Message sent successfully"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            },5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+      <script src="app.js"></script>
+    </body>
+    </html>
